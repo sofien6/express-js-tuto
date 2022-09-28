@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/courses',(req,res)=>{
-   let courseTitle = 'welcome in ' + req.query.course + ' course ' 
+   let courseTitle = 'welcome in ' + req.query.course + ' course with dz brain ' 
    res.render('index',{ title: courseTitle , subtitle: 'react course with dzbrain'})
 })
 module.exports = router;

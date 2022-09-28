@@ -1,3 +1,12 @@
+var mongoose = require('mongoose')
+var db_url = require('./properties').DB_URL;
+
+// creating connection with database using mongoose
+mongoose.connect(db_url,{ useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
