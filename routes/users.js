@@ -2,14 +2,14 @@ var express = require('express')
 var router = express.Router()
 
 // add midleware 
-router.use('/',(req,res,next)=>{
+/*router.use('/',(req,res,next)=>{
     console.log(' midelwar called');
     console.log('%s %s', req.method, req.url);  
     next()
-})
+})*/
 
 // display usersList then go to the end of the midleware
-router.get("/",(req,res,next)=>{
+router.get("/",(req,res)=>{
     var user = {
         id : "A58DD",
         name : 'Sofien',
@@ -19,13 +19,13 @@ router.get("/",(req,res,next)=>{
     }
     res.send(user)
     // next this step u need to end the midleware
-    next()
+    //next()
 })
 
-router.use('/',(req,res)=>{
+/*router.use('/',(req,res)=>{
     console.log(' midelware ended');
     
-})
+})*/
 
 router.get("/all-users/:id([0-9]{4})",(req,res)=>{
   var user = " Lists of all users " + req.params.id
@@ -47,6 +47,8 @@ router.delete("/delete-user",(req,res)=>{
     res.send(user)
 })
 
-
+router.get('/all',(req,res)=>{
+    res.render('index',{ title:' All users ' , subtitle: ' this is a list of all users in dzbrain '})
+ })
 
 module.exports = router
