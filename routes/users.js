@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 
 // add midleware 
-router.use((req,res,next)=>{
+router.use('/',(req,res,next)=>{
     console.log(' midelwar called');
     console.log('%s %s', req.method, req.url);  
     next()
@@ -28,8 +28,8 @@ router.use('/',(req,res)=>{
 })
 
 router.get("/all-users/:id([0-9]{4})",(req,res)=>{
-    var user = " List of all users " + req.params.id
-    res.send(user)
+  var user = " Lists of all users " + req.params.id
+  res.send(user)
 })
 
 router.post("/new-user",(req,res)=>{
