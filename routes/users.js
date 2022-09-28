@@ -1,7 +1,15 @@
 var express = require('express')
 var router = express.Router()
 
-router.get("/",(req,res)=>{
+// add midleware 
+router.use((req,res,next)=>{
+    console.log(' midelwar called');
+    console.log('%s %s', req.method, req.url);  
+    next()
+})
+
+// display usersList then go to the end of the midleware
+router.get("/",(req,res,next)=>{
     var user = {
         id : "A58DD",
         name : 'Sofien',
@@ -10,6 +18,13 @@ router.get("/",(req,res)=>{
         youtube : 'DZBRAIN',
     }
     res.send(user)
+    // next this step u need to end the midleware
+    next()
+})
+
+router.use('/',(req,res)=>{
+    console.log(' midelware ended');
+    
 })
 
 router.get("/all-users/:id([0-9]{4})",(req,res)=>{
